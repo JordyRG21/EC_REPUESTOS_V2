@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_PROYECTO_WEBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="EC_COMPRAS">
+    <Key>
+      <PropertyRef Name="EC_COMPRAS_ID" />
+    </Key>
+    <Property Name="EC_COMPRAS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EC_COMPRAS_USUARIOS" Type="Int32" Nullable="false" />
+    <Property Name="EC_COMPRAS_FECHA" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="EC_COMPRAS_CANTIDAD" Type="Int32" Nullable="false" />
+    <Property Name="EC_COMPRAS_PRODUCTOS" Type="Int32" Nullable="false" />
+    <Property Name="EC_COMPRAS_IMPUESTO" Type="Double" Nullable="false" />
+    <Property Name="EC_COMPRAS_SUBTOTAL" Type="Double" />
+    <Property Name="EC_COMPRAS_TOTAL" Type="Int32" Nullable="false" />
+    <Property Name="EC_COMPRAS_PAGO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="EC_PRODUCTOS" Relationship="Self.FK_COMPRAS_PRODUCTOS" FromRole="EC_COMPRAS" ToRole="EC_PRODUCTOS" />
+    <NavigationProperty Name="EC_USUARIOS" Relationship="Self.FK_COMPRAS_USUARIOS" FromRole="EC_COMPRAS" ToRole="EC_USUARIOS" />
+  </EntityType>
+  <EntityType Name="EC_PRODUCTOS">
+    <Key>
+      <PropertyRef Name="EC_PRODUCTO_ID" />
+    </Key>
+    <Property Name="EC_PRODUCTO_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EC_PRODUCTO_NOMBRE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EC_PRODUCTO_MARCA" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EC_PRODUCTO_URL_IMAGEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EC_PRODUCTO_DESCRIPCION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="EC_PRODUCTO_PRECIO" Type="Double" Nullable="false" />
+    <NavigationProperty Name="EC_COMPRAS" Relationship="Self.FK_COMPRAS_PRODUCTOS" FromRole="EC_PRODUCTOS" ToRole="EC_COMPRAS" />
+  </EntityType>
+  <EntityType Name="EC_USUARIOS">
+    <Key>
+      <PropertyRef Name="EC_USUARIOS_ID" />
+    </Key>
+    <Property Name="EC_USUARIOS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EC_USUARIOS_CEDULA" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EC_USUARIOS_NOMBRE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EC_USUARIOS_APE1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EC_USUARIOS_APE2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="EC_USUARIOS_TELEFONO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="EC_USUARIOS_EMAIL" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="EC_USUARIOS_ESTADO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EC_USUARIOS_CONTRASENNA" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="EC_COMPRAS" Relationship="Self.FK_COMPRAS_USUARIOS" FromRole="EC_USUARIOS" ToRole="EC_COMPRAS" />
+  </EntityType>
+  <Association Name="FK_COMPRAS_PRODUCTOS">
+    <End Role="EC_PRODUCTOS" Type="Self.EC_PRODUCTOS" Multiplicity="1" />
+    <End Role="EC_COMPRAS" Type="Self.EC_COMPRAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EC_PRODUCTOS">
+        <PropertyRef Name="EC_PRODUCTO_ID" />
+      </Principal>
+      <Dependent Role="EC_COMPRAS">
+        <PropertyRef Name="EC_COMPRAS_PRODUCTOS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_COMPRAS_USUARIOS">
+    <End Role="EC_USUARIOS" Type="Self.EC_USUARIOS" Multiplicity="1" />
+    <End Role="EC_COMPRAS" Type="Self.EC_COMPRAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EC_USUARIOS">
+        <PropertyRef Name="EC_USUARIOS_ID" />
+      </Principal>
+      <Dependent Role="EC_COMPRAS">
+        <PropertyRef Name="EC_COMPRAS_USUARIOS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DB_PROYECTO_WEBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="EC_COMPRAS" EntityType="Self.EC_COMPRAS" />
+    <EntitySet Name="EC_PRODUCTOS" EntityType="Self.EC_PRODUCTOS" />
+    <EntitySet Name="EC_USUARIOS" EntityType="Self.EC_USUARIOS" />
+    <AssociationSet Name="FK_COMPRAS_PRODUCTOS" Association="Self.FK_COMPRAS_PRODUCTOS">
+      <End Role="EC_PRODUCTOS" EntitySet="EC_PRODUCTOS" />
+      <End Role="EC_COMPRAS" EntitySet="EC_COMPRAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_COMPRAS_USUARIOS" Association="Self.FK_COMPRAS_USUARIOS">
+      <End Role="EC_USUARIOS" EntitySet="EC_USUARIOS" />
+      <End Role="EC_COMPRAS" EntitySet="EC_COMPRAS" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
