@@ -4,67 +4,34 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Productos</h2>
 
 <div>
     @using (Html.BeginForm("Index", "EC_PRODUCTOS"))
     {
-        @*Campo donde el usuario ingresa el nombre del departamento que desea buscar*@
         <div class="form-group">
-            <div class="col-md-10">
-                <input type="text" name="searchString" class="textInput" placeholder="Buscar productos" />
+            <div class="input-group">
+                <input type="text" name="searchString" id="inputProducts" class="form-control" placeholder="Buscar productos" aria-describedby="basic-addon1">
+                <span class="input-group-addon glyphicon glyphicon-search"></span>
             </div>
-            <button type="submit">Buscar</button>
         </div>
     }
 </div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.EC_PRODUCTO_NOMBRE)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EC_PRODUCTO_MARCA)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EC_PRODUCTO_URL_IMAGEN)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EC_PRODUCTO_DESCRIPCION)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EC_PRODUCTO_PRECIO)
-        </th>
-        <th></th>
-    </tr>
+<div class="list-view">
+    @foreach (var item in Model)
+    {
+        <div class="list-item">
+            <span class="p-cart">Repuestos de Motocicleta</span>
+            <span class="p-brand">@item.EC_PRODUCTO_MARCA</span>
+            <span class="p-name">@item.EC_PRODUCTO_NOMBRE</span>
+            <img src="@Url.Content(@item.EC_PRODUCTO_URL_IMAGEN)"/>
+            <span class="p-description">@item.EC_PRODUCTO_DESCRIPCION</span>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.EC_PRODUCTO_NOMBRE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EC_PRODUCTO_MARCA)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EC_PRODUCTO_URL_IMAGEN)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EC_PRODUCTO_DESCRIPCION)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EC_PRODUCTO_PRECIO)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.EC_PRODUCTO_ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.EC_PRODUCTO_ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.EC_PRODUCTO_ID })
-        </td>
-    </tr>
-}
-
-</table>
+            <div class="add-to-cart">
+                @Html.ActionLink("add to cart", "AddToCart", "Home", new { id = item.EC_PRODUCTO_ID }, null)
+                <span class="p-price">@String.Format("{0:c}", item.EC_PRODUCTO_PRECIO)</span>
+            </div>
+        </div>
+    }
+</div>

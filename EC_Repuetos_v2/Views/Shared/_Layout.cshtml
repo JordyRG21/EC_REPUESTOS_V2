@@ -22,21 +22,24 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
+                <img class="logo" src="~/Imagenes/ecommerceLogo.png" />
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("eCommerce", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li style="color:white">Hola @user.EC_USUARIOS_NOMBRE @user.EC_USUARIOS_APE1<li>
                 </ul>
-                @Html.Partial("_LoginPartial")
+            </div>
+            <div>
+                <span class="welcome">Bienvenido(a) @user.EC_USUARIOS_NOMBRE @user.EC_USUARIOS_APE1</span>
+                <a href="@Url.Action("CloseSession", "Login")">
+                    <img class="logout" src="~/Imagenes/logout.png" />
+                </a>
             </div>
         </div>
     </div>
@@ -44,7 +47,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Proyecto #1 Desarrollo De Aplicaciones Basadas En Web</p>
         </footer>
     </div>
 

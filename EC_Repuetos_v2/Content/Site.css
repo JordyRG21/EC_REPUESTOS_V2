@@ -17,8 +17,149 @@
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
-input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.navbar-inverse{
+    background-color: #424242;
+    border-bottom: solid;
+    border-bottom-color: #0080FF;
+}
+
+.logo{
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    left: 20px;
+}
+
+.welcome{
+    color: white;
+    position: absolute;
+    top: 30%;
+    left: 80%;
+    font-size: medium;
+    width: 30%;
+}
+
+#inputProducts{
+    width: 100%;
+    border: 2px solid  #0080FF;
+    margin: 0;
+}
+
+table{
+    margin-top: 70px;
+    -webkit-box-shadow: 5px 6px 5px 0px rgba(97,97,97,1);
+    -moz-box-shadow: 5px 6px 5px 0px rgba(97,97,97,1);
+    box-shadow: 5px 6px 5px 0px rgba(97,97,97,1);
+}
+
+th{
+    background-color: #424242;
+    color: lightgray;
+}
+
+.list-view {
+    display: flex;
+    flex-wrap: wrap
+}
+
+.list-item {
+    width: calc(100% / 3 - 34px);
+    margin: 20px 25px;
+    opacity: .8;
+    transition: .3s;
+    -webkit-transition: .3s;
+    padding: 20px;
+    border: 1px solid #0080FF;
+}
+.list-item:hover {
+    opacity: 1
+}
+.list-item:nth-child(3n+1) {
+    margin-left: 0;
+}
+.list-item:nth-child(3n) {
+    margin-right: 0
+}
+
+.list-item .p-cat {
+    color: #2dbb9b;
+    display: inline-block;
+    padding: 9px 0;
+    font-size: .8em;
+    font-weight: bold;
+}
+.list-item .p-brand {
+    color: #0080FF;
+    border: 1px solid #0080FF;
+    font-size: .8em;
+    font-weight: bold;
+    padding: 7px;
+    float: right;
+}
+.list-item img{
+ width: 90px;
+ height: 90px;
+}
+.list-item .p-name {
+    display: block;
+    font-weight: bold;
+    margin: 5px 0;
+}
+.list-item .p-description {
+    /*font-size: 0.9em;*/
+    color: #808080;
+    margin-bottom: 10px;
+    display: block;
+}
+.list-item .add-to-cart {
+    display: inline-block;
+    vertical-align: bottom;
+    margin-top: 10px;
+}
+
+
+.list-item .add-to-cart a {
+    border: 1px solid #424242;
+    padding: 10px;
+    font-weight: bold;
+    font-size: .8em;
+    margin: 0;
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #424242;
+}
+.list-item .add-to-cart a:hover {
+    color: #fff;
+    background: #424242;
+}
+.list-item .p-price {
+    color: #fff;
+    background: #424242;
+    font-weight: bold;
+    font-size: .9em;
+    padding: 10px;
+}
+.list-item .p-unit {
+    float: right;
+    font-weight: bold;
+    font-size: .8em;
+    vertical-align: bottom;
+}
+
+.logout{
+    position: absolute;
+    top: 20%;
+    left: 95%;
+    width: 33px;
+    height: 33px;
+}
+
+.whiteText{
+    color: white;
 }
