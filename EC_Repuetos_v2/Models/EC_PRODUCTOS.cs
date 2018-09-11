@@ -21,7 +21,8 @@ namespace EC_Repuetos_v2.Models
         {
             this.EC_COMPRAS = new HashSet<EC_COMPRAS>();
         }
-
+    
+        public int EC_PRODUCTO_ID { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "Por favor, ingrese un nombre"), DisplayName("Nombre del Producto"), StringLength(45, ErrorMessage = "Longitud del nombre es muy extensa. Por favor no exceda los 45 caracteres."), RegularExpression("([A-Za-z])+( [A-Za-z_]+)*", ErrorMessage = "Formato Inválido.")]
         public string EC_PRODUCTO_NOMBRE { get; set; }
 

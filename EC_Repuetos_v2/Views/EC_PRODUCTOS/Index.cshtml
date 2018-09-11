@@ -29,7 +29,7 @@
             <span class="p-description">@item.EC_PRODUCTO_DESCRIPCION</span>
 
             <div class="add-to-cart">
-                @Html.ActionLink("add to cart", "AddToCart", "Home", new { id = item.EC_PRODUCTO_ID }, null)
+                <input id="Button" type="button"  value="Registrarse" onclick="location.href='@Url.Action("Create", "EC_COMPRAS", new { id = item.EC_PRODUCTO_ID })'" />
                 <span class="p-price">@String.Format("{0:c}", item.EC_PRODUCTO_PRECIO)</span>
             </div>
         </div>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -119,6 +120,31 @@ namespace EC_Repuetos_v2.Controllers
             db.EC_PRODUCTOS.Remove(eC_PRODUCTOS);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        /* [HttpPost, ActionName("AddToCar")]
+         public ActionResult AddtoCar(int ?id, int ?Id_User) {
+             string ConnString = "Server=localhost\SQLEXPRESS; Database=DB_PROYECTO_WEB; Trusted_Connection=True;";
+             string Precio = "SELECT * FROM PRODUCTOS WHERE EC_PRODUCTO_ID = @id";
+             DateTime Date = DateTime.Today; 
+             double subtotal = Int32.Parse(Precio);
+             double total = subtotal + (subtotal * 0.13);
+             SqlConnection conn = new SqlConnection(ConnString);
+             SqlCommand command = new SqlCommand(Precio);
+             command.Parameters.AddWithValue("@id", "@id");
+             using (SqlDataReader reader = command.ExecuteReader()){
+                 if (reader.Read()) {
+                     return View("Index");
+                 }
+             }
+
+             return View("index"); 
+
+         }*/
+
+        [HttpPost, ActionName("AddToCar")]
+        public ActionResult AddtoCar() {
+            return RedirectToAction("Create", "EC_COMPRASController");
         }
 
         protected override void Dispose(bool disposing)

@@ -17,7 +17,6 @@ namespace EC_Repuetos_v2.Models
     public partial class EC_COMPRAS
     {
         public int EC_COMPRAS_ID { get; set; }
-
         [DisplayName("Usuario")]
         public int EC_COMPRAS_USUARIOS { get; set; }
 
@@ -30,7 +29,7 @@ namespace EC_Repuetos_v2.Models
         [DisplayName("Productos")]
         public int EC_COMPRAS_PRODUCTOS { get; set; }
 
-        [DisplayName("Usuario")]
+        [DisplayName("Impuesto")]
         public double EC_COMPRAS_IMPUESTO { get; set; }
 
         [DisplayName("Subtotal")]

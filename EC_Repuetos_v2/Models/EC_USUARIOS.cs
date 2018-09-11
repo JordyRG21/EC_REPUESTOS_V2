@@ -21,7 +21,8 @@ namespace EC_Repuetos_v2.Models
         {
             this.EC_COMPRAS = new HashSet<EC_COMPRAS>();
         }
-
+    
+        public int EC_USUARIOS_ID { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "Por favor ingrese la cédula del empleado"), DisplayName("Cédula"), StringLength(9, ErrorMessage = "La longitud de la cédula es muy extensa, no exceda los 9 caracteres."), RegularExpression("([1-9][0-9]*)", ErrorMessage = "Formato Inválido (Ingrese números.)")]
         public string EC_USUARIOS_CEDULA { get; set; }
 
