@@ -43,7 +43,7 @@ namespace EC_Repuetos_v2.Controllers
         }
 
         // GET: EC_PRODUCTOS/Create
-        public ActionResult Create()
+        public ActionResult Create(int ?id)
         {
             return View();
         }

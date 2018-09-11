@@ -12,16 +12,13 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.EC_COMPRAS_ID)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.EC_COMPRAS_FECHA)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.EC_COMPRAS_CANTIDAD)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EC_COMPRAS_IMPUESTO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EC_COMPRAS_SUBTOTAL)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.EC_COMPRAS_TOTAL)
@@ -41,16 +38,13 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.EC_COMPRAS_ID)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.EC_COMPRAS_FECHA)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.EC_COMPRAS_CANTIDAD)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EC_COMPRAS_IMPUESTO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EC_COMPRAS_SUBTOTAL)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.EC_COMPRAS_TOTAL)
@@ -65,9 +59,8 @@
             @Html.DisplayFor(modelItem => item.EC_USUARIOS.EC_USUARIOS_CEDULA)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.EC_COMPRAS_ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.EC_COMPRAS_ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.EC_COMPRAS_ID })
+            @Html.ActionLink("Detalle", "Details", new { id = item.EC_COMPRAS_ID }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.EC_COMPRAS_ID })
         </td>
     </tr>
 }
